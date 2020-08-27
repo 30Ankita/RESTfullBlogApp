@@ -1,0 +1,27 @@
+<%- include('partials/header'); -%> 
+    <div class="form-design">
+        <div class="container">
+            <h2>EDIT <%=blog.title %> </h2>
+            
+            <form action="/blogs/<%= blog._id %>?_method=PUT" method="POST">
+              <div class="form-group">
+                <label for="uname">Title:</label>
+                <input type="text" class="form-control" id="uname" value="<%=blog.title%>" name="blog[title]" required>
+                
+            </div>
+              <div class="form-group">
+                <label for="pwd">Image URL:</label>
+                <input type="text" class="form-control" id="pwd" value="<%=blog.image%>" name="blog[image]" required>
+                
+            </div>
+
+            <div class="form-group">
+                <label for="comment">Comment:</label>
+                <textarea class="form-control" rows="5" id="comment" name="blog[body]" ><%=blog.body%></textarea>
+              </div>
+              
+              <button type="submit" class="btn btn-danger btn-lg">Submit</button>
+            </form>
+          </div>
+          
+        </div>

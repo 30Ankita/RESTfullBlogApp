@@ -1,0 +1,17 @@
+<%- include('partials/header'); -%>
+
+<% blogs.forEach(function(blog){ %>
+    <div id="index">
+       
+        <h2><%= blog.title %></h2>
+        <img src=" <%= blog.image %>" ><br>
+        <span><%= blog.created.toDateString() %></span><br>
+        <p><%- blog.body %></p>
+
+        <a class="btn btn-success" href="/blogs/<%=blog._id %>">Read More</a>
+    
+    </div>
+
+<% }) %>
+
+<%- include('partials/footer'); -%>

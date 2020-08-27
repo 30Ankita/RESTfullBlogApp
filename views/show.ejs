@@ -1,0 +1,14 @@
+<%- include('partials/header'); -%> 
+   <div class = "border-design">
+        <div class="container">
+            <h2><%= blog.title %> </h2>
+            <img src=" <%= blog.image %>" ><br><br>
+            <span><%= blog.created.toDateString() %></span><br><br>
+            <p><%- blog.body %></p>
+        <a class="btn btn-warning btn-lg" href="/blogs/<%= blog._id %>">Edit</a>
+        <form action="/blogs/<%= blog._id %>?_method=DELETE" method="POST">
+            <button class="btn btn-danger btn-lg">Delete</button><br><br>
+        </form>
+    </div>
+    </div>
+<%- include('partials/footer'); -%> 

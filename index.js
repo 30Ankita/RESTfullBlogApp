@@ -1,13 +1,23 @@
+if (process.env.NODE_ENV !== 'production'){
+    require('dotenv').config()
+}
+
+
 var bodyParser = require('body-parser'),
     express = require('express'),
     methodOverride = require('method-override'),
     app = express();
     mongoose = require('mongoose'),
 
-mongoose.connect("mongodb://localhost/blogapp");
+//mongoose.connect("mongodb://localhost/blogapp");
+mongoose.connect(process.env.DATABASE_URL,{ useNewUrlParser : true})
+const db = mongoose.connection
+db.on('error',error => console.error(error))
+db.once('open',() => console.log('Connected to Mongoose'))
 
 //APP CONFIG
 app.set("view engine","ejs");
+app.set('views',__dirname + '/views')
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(methodOverride("_method"));
